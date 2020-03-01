@@ -9,6 +9,7 @@ import {
 import logo from './logo.svg';
 import './App.css';
 import Navigation from './components/navigation/navigation';
+import EditForm from './components/forms/edit-form'
 import AddForm from './components/forms/add-form';
 import './firebase-config/firebase-config';
 import * as firebase from 'firebase';
@@ -30,12 +31,14 @@ function App() {
 
   }, [])
 
-  const [editing, setEditing] = useState(false)
 
   const deleteTask = id =>{
-    setEditing(false)
     setTasks(tasks.filter(tasks => tasks.id !== id))
     db.collection("todo").doc(`${id}`).delete()
+  }
+
+  const editLine = tasks =>{
+    
   }
 
 
@@ -65,9 +68,11 @@ return (
     }/> 
 
   <Route exact path='/' render={() =>
-    <Table tasks={tasks}/>
-  }/> 
+    <Table tasks={tasks} deleteTask={deleteTask}/>
+  }/>
 
+
+   
   </BrowserRouter>
 );
 }

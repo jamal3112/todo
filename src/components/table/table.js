@@ -28,7 +28,9 @@ const DeleteTask = id =>{
                         <button
                         onClick={() => DeleteTask(task.id)}
                         >Удалить</button>
-                        <button>Изменить</button>
+                        <button
+                        onClick={() => props.EditForm }
+                        >Изменить</button>
                     </td>
                 </tr>
             ))
